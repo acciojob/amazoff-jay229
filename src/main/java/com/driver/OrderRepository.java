@@ -16,10 +16,10 @@ public class OrderRepository {
     HashSet<String>orderNotAssigned;
 
     public OrderRepository() {
-        orderMap=new HashMap<>();
-        partnerMap=new HashMap<>();
-        pair=new HashMap<>();
-        orderNotAssigned=new HashSet<>();
+        this.orderMap=new HashMap<>();
+        this.partnerMap=new HashMap<>();
+        this.pair=new HashMap<>();
+        this.orderNotAssigned=new HashSet<>();
     }
     public void addOrder(Order order){
         String id=order.getId();
@@ -69,7 +69,9 @@ public class OrderRepository {
         return orderList;
     }
     public int getCountOfUnassignedOrders() {
-        return orderNotAssigned.size();
+        if (!orderNotAssigned.isEmpty())
+            return orderNotAssigned.size();
+        return 0;
     }
     public int getOrdersLeftAfterGivenTimeByPartnerId(String time, String partnerId){
         int numericalTime = Integer.parseInt(time.substring(0,2))*60 + Integer.parseInt(time.substring(3,5));
