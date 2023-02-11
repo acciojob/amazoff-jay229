@@ -1,11 +1,16 @@
 package com.driver;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collection;
 import java.util.List;
 
 @Service
 public class OrderService {
+
     OrderRepository orderRepository = new OrderRepository();
 
 
@@ -14,7 +19,7 @@ public class OrderService {
     }
 
     public void addPartner(String partnerId){
-         orderRepository.addPartner(partnerId);
+        orderRepository.addPartner(partnerId);
     }
 
     public void addOrderPartnerPair(String orderId, String partnerId){
@@ -34,8 +39,7 @@ public class OrderService {
     }
 
     public List<String> getOrdersByPartnerId(String partnerId){
-        List<String> orderIdList=orderRepository.getOrdersByPartnerId(partnerId);
-        return orderIdList;
+        return orderRepository.getOrdersByPartnerId(partnerId);
     }
 
     public List<String> getAllOrders() {
@@ -58,10 +62,10 @@ public class OrderService {
     }
 
     public void deletePartnerById(String partnerId){
-         orderRepository.deletePartnerById(partnerId);
+        orderRepository.deletePartnerById(partnerId);
     }
 
     public void deleteOrderById(String orderId){
-         orderRepository.deleteOrderById(orderId);
+        orderRepository.deleteOrderById(orderId);
     }
 }
